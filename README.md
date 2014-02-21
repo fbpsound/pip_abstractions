@@ -43,10 +43,10 @@ Contents:
 - piano phase inspired mini sequencer
 
 - random object without repeat
-
-- mega simple sampler
 - 
+- mega simple sampler
 
+=================
 
 Filippo
 mail@fbpsound.com
