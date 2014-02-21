@@ -1,0 +1,51 @@
+#N canvas 377 132 685 239 10;
+#X text 25 -81 External Input;
+#X obj 28 -59 inlet;
+#X obj 28 22 outlet~;
+#X obj 136 -62 vsl 15 128 1 599 0 1 empty empty A 0 -9 0 10 -262144
+-1 -1 200 1;
+#X floatatom 136 80 5 0 0 0 - - -;
+#X obj 185 -61 vsl 15 128 1 800 0 1 empty empty D 0 -9 0 10 -262144
+-1 -1 3700 1;
+#X floatatom 185 80 5 0 0 0 - - -;
+#X obj 240 -62 vsl 15 128 0 1 0 1 empty empty R 0 -9 0 10 -262144 -1
+-1 0 1;
+#X floatatom 240 80 5 0 0 0 - - -;
+#N canvas 514 249 626 335 stuff 0;
+#X obj 254 240 vline~;
+#X text 301 239 Generate Ramp;
+#X msg 238 207 1 \$2 \, \$4 \$3 \$2;
+#X obj 199 150 pack f f f f;
+#X obj 342 287 outlet~;
+#X text 400 288 to Volume Object;
+#X obj 232 42 r a;
+#X obj 273 41 r d;
+#X obj 317 45 r s;
+#X obj 153 39 inlet;
+#X connect 0 0 4 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 6 0 3 1;
+#X connect 7 0 3 2;
+#X connect 8 0 3 3;
+#X connect 9 0 3 0;
+#X restore 28 -23 pd stuff;
+#X obj 136 104 s a;
+#X obj 185 105 s d;
+#X obj 240 105 s s;
+#X obj 303 -81 loadbang;
+#X text 293 -57 Simple Envelope. Route trigger into its inlet and the
+audio outlet to a *~ volume multiplier object to enable the envelope.
+Tweak settings right here.;
+#X text 305 109 pip;
+#X connect 1 0 9 0;
+#X connect 3 0 4 0;
+#X connect 4 0 10 0;
+#X connect 5 0 6 0;
+#X connect 6 0 11 0;
+#X connect 7 0 8 0;
+#X connect 8 0 12 0;
+#X connect 9 0 2 0;
+#X connect 13 0 7 0;
+#X connect 13 0 3 0;
+#X connect 13 0 5 0;

@@ -1,0 +1,26 @@
+#N canvas 343 214 679 248 10;
+#X obj 120 30 openpanel;
+#X msg 118 65 read -resize \$1 wave;
+#X obj 57 2 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array wave 155216 float 2;
+#X coords 0 1 155216 -1 200 140 1;
+#X restore 361 28 graph;
+#X obj 120 95 soundfiler;
+#X obj 129 149 tabplay~ wave;
+#X obj 61 119 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 7 64 inlet;
+#X obj 129 187 outlet~;
+#X text 368 193 Simplest form of a sample playback patcher.;
+#X text 83 3 Click to open dialogue and select sample.;
+#X text 45 65 Play;
+#X text 633 221 pip;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
