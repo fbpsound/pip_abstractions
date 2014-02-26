@@ -1,26 +1,36 @@
-#N canvas 267 82 910 428 10;
+#N canvas 267 82 885 448 10;
 #N canvas 67 74 745 644 audiorouter 0;
+#X obj 215 504 dac~;
+#X obj 106 201 env~;
+#X obj 42 252 s vu;
 #X obj 284 62 r~ triangle;
+#X obj 42 218 - 100;
 #X text 206 520 AUDIO OUT;
 #X obj 121 62 r~ pulse1;
 #X obj 198 63 r~ pulse2;
 #X obj 371 62 r~ noise;
 #X text 232 36 Oscillators In;
+#X text 81 253 to VU Meter;
 #X text 635 555 Bitcrusher_Mod;
 #X obj 544 590 s~ bitcrusher;
 #X obj 543 552 phasor~ 5000;
-#X obj 157 505 outlet~ L;
-#X obj 299 505 outlet~ R;
-#X connect 0 0 9 0;
-#X connect 0 0 10 0;
-#X connect 2 0 9 0;
-#X connect 2 0 10 0;
-#X connect 3 0 9 0;
-#X connect 3 0 10 0;
-#X connect 4 0 9 0;
-#X connect 4 0 10 0;
-#X connect 8 0 7 0;
-#X restore 605 197 pd audiorouter;
+#X text 443 65 You can send these to individual outs.;
+#X connect 1 0 4 0;
+#X connect 3 0 1 0;
+#X connect 3 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 2 0;
+#X connect 6 0 1 0;
+#X connect 6 0 0 0;
+#X connect 6 0 0 1;
+#X connect 7 0 1 0;
+#X connect 7 0 0 0;
+#X connect 7 0 0 1;
+#X connect 8 0 1 0;
+#X connect 8 0 0 0;
+#X connect 8 0 0 1;
+#X connect 13 0 12 0;
+#X restore 605 256 pd audiorouter;
 #N canvas 143 95 765 634 pulse1 0;
 #X obj 116 238 * -1;
 #X msg 188 241 0;
@@ -85,7 +95,7 @@
 #X connect 25 0 27 0;
 #X connect 26 0 24 0;
 #X connect 27 0 8 1;
-#X restore 605 69 pd pulse1;
+#X restore 605 128 pd pulse1;
 #N canvas 381 110 847 626 pulse 0;
 #X floatatom 115 222 5 0 0 0 - - -;
 #X obj 131 269 * -1;
@@ -151,7 +161,7 @@
 #X connect 26 0 28 0;
 #X connect 27 0 0 0;
 #X connect 28 0 10 1;
-#X restore 605 101 pd pulse 2;
+#X restore 605 160 pd pulse 2;
 #N canvas 140 22 736 400 noise 0;
 #X obj 190 32 noise~;
 #X obj 209 161 s~ noise;
@@ -163,7 +173,9 @@
 #X connect 2 0 1 0;
 #X connect 3 0 4 0;
 #X connect 4 0 2 1;
-#X restore 605 165 pd noise;
+#X restore 605 224 pd noise;
+#X obj 233 287 vu 15 120 vu empty -100 -100 0 10 -262144 -66577 1 0
+;
 #N canvas 138 32 663 588 triangle 0;
 #X obj 114 146 * -1;
 #X msg 188 145 0;
@@ -221,39 +233,35 @@
 #X connect 26 0 19 1;
 #X connect 26 0 15 1;
 #X connect 27 0 26 0;
-#X restore 605 133 pd triangle;
-#X obj 143 310 hradio 15 1 0 4 p2form empty Pulse_2_Sound 0 -8 0 10
+#X restore 605 192 pd triangle;
+#X obj 143 299 hradio 15 1 0 4 p2form empty Pulse_2_Sound 0 -8 0 10
 -262144 -1 -1 0;
-#X obj 44 310 hradio 15 1 0 4 p1form empty Pulse_1_Sound 0 -8 0 10
+#X obj 44 299 hradio 15 1 0 4 p1form empty Pulse_1_Sound 0 -8 0 10
 -262144 -1 -1 0;
-#X text 815 390 pip;
-#X obj 96 64 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6600 1;
-#X obj 96 212 s p1notes;
-#X obj 198 64 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+#X text 815 409 pip;
+#X obj 96 93 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 307 64 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+#X obj 96 241 s p1notes;
+#X text 25 -17 PDNES Help Patcher;
+#X obj 198 93 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 198 212 s p2notes;
-#X obj 307 212 s trinotes;
-#X obj 435 130 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 307 93 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 198 241 s p2notes;
+#X obj 307 241 s trinotes;
+#X obj 435 159 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 436 212 s noisenotes;
-#X text 601 42 Inner Workings - tweak envelopes here;
-#X text 14 9 Pip NES;
-#X obj 627 278 outlet~ L;
-#X obj 707 276 outlet~ R;
-#X obj 21 44 inlet p1;
-#X obj 152 36 inlet p2;
-#X obj 262 36 inlet tri;
-#X obj 420 82 inlet noise;
-#X connect 0 0 18 0;
-#X connect 0 1 19 0;
-#X connect 8 0 9 0;
-#X connect 10 0 12 0;
-#X connect 11 0 13 0;
-#X connect 14 0 15 0;
-#X connect 20 0 8 0;
-#X connect 21 0 10 0;
-#X connect 22 0 11 0;
-#X connect 23 0 14 0;
+#X obj 435 241 s noisenotes;
+#X text 601 101 Inner Workings - tweak envelopes here;
+#X obj 806 -7 pddp/dsp;
+#X text 43 324 Change cycle of pulse waves;
+#X text 338 88 These send 0-127;
+#X text 603 276 Individual audio outs can be found in here;
+#X text 26 19 Roughly emulates the sound of the NES. Send Midi note
+data to the receivers *notes as seen below. Tweak envelope settings
+in the subpatchers on the right. inlets are from left to right: pulse
+1 \, pulse 2 \, triangle \, noise.;
+#X connect 9 0 10 0;
+#X connect 12 0 14 0;
+#X connect 13 0 15 0;
+#X connect 16 0 17 0;

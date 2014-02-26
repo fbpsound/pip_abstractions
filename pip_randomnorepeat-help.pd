@@ -1,0 +1,20 @@
+#N canvas 591 208 355 315 10;
+#X obj 36 185 pip_randomnorepeat;
+#X obj 36 163 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 35 234 5 0 0 0 - - -;
+#X floatatom 139 155 5 0 0 0 - - -;
+#X text 7 8 Random no repeat You can define a random number range and
+the abstraction will avoid that the same number gets chosen twice in
+a row.;
+#X text 278 278 pip;
+#X obj 149 97 loadbang;
+#X msg 148 124 5;
+#X text 77 235 Result;
+#X text 174 155 Define Number Range;
+#X text 11 142 Trigger;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 0 1;
+#X connect 6 0 7 0;
+#X connect 7 0 3 0;

@@ -1,0 +1,12 @@
+#N canvas 258 266 764 370 10;
+#X obj 88 303 dac~;
+#X text 473 330 pip;
+#X text 17 -12 Pip Chordsynth Help Patch;
+#X obj 87 157 pip_chordsynth;
+#X text 24 34 This synth accepts up to 4 note values;
+#X msg 88 73 60 64 69 91;
+#X text 173 70 Send a chord (midi notes);
+#X text 190 155 it plays it!;
+#X connect 3 0 0 0;
+#X connect 3 1 0 1;
+#X connect 5 0 3 0;

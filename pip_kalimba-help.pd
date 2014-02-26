@@ -1,0 +1,10 @@
+#N canvas 261 347 714 172 10;
+#X text 248 57 This is needed for PD to communicate with Unity using
+the Kalimba plugin.;
+#X text 559 148 pip;
+#X obj 139 65 pip_kalimba;
+#X msg 139 117;
+#X text 239 114 When connected to Unity \, this shows the incoming
+events sent from Unity.;
+#X text 27 9 KALIMBA HELP FILE;
+#X connect 2 0 3 0;

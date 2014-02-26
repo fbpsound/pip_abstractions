@@ -1,0 +1,23 @@
+#N canvas 401 265 578 238 10;
+#X text 104 127 You can easily swap the oscillators with loops (see
+pip_simplesampler) and create state based additive layers for interactive
+music. Each layer can play at any time.;
+#X obj 7 134 pip_layer_add;
+#X text -12 8 4 Additive Layer Interactive Music Machine Help Patch
+;
+#X msg -9 83 1;
+#X msg 22 83 2;
+#X msg 55 83 3;
+#X msg 88 83 4;
+#X msg 127 83 5;
+#X obj 19 193 dac~;
+#X text -8 36 This Patcher lets you choose between different musical
+layers by sending numbers 1-5. Can be turned off and on.;
+#X obj 486 10 pddp/dsp;
+#X connect 1 0 8 0;
+#X connect 1 1 8 1;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 0;
+#X connect 7 0 1 0;

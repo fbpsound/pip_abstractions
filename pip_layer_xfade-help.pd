@@ -1,0 +1,25 @@
+#N canvas 599 74 650 255 10;
+#X obj 126 107 pip_layer_xfade;
+#X obj 124 164 dac~;
+#X text 30 -22 5 Crossfade Layer Interactive Music Machine Help Patch
+;
+#X text 256 122 You can easily swap the oscillators with loops (see
+pip_simplesampler) and create state based crossfade layers for interactive
+music. Only one layer plays at every moment.;
+#X msg 104 64 1;
+#X msg 11 64 0;
+#X msg 142 64 2;
+#X msg 183 64 3;
+#X msg 217 64 4;
+#X msg 264 64 5;
+#X text 11 40 0 to stop;
+#X text 129 40 Crossfade between layers;
+#X obj 568 -20 pddp/dsp;
+#X connect 0 0 1 0;
+#X connect 0 1 1 1;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;

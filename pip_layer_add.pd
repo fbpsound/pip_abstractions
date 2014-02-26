@@ -1,6 +1,5 @@
 #N canvas 473 296 651 382 10;
-#X obj 265 257 dac~;
-#X text 58 8 4 Additive Layer Interactive Music Machine;
+#X text -12 8 4 Additive Layer Interactive Music Machine;
 #N canvas 684 430 942 535 logic 0;
 #X obj 32 218 vline~;
 #X obj 179 309 *~;
@@ -78,22 +77,43 @@
 #X connect 32 0 33 0;
 #X connect 34 0 32 0;
 #X connect 35 0 31 0;
-#X restore 260 147 pd logic;
-#X obj 82 62 tgl 40 0 layer1 empty Layer_1 -19 -20 0 20 -262144 -1
--1 0 1;
-#X obj 194 62 tgl 40 0 layer2 empty Layer_2 -19 -20 0 20 -262144 -1
--1 0 1;
-#X obj 299 62 tgl 40 0 layer3 empty Layer_3 -19 -20 0 20 -262144 -1
--1 0 1;
-#X obj 407 62 tgl 40 0 layer4 empty Layer_4 -19 -20 0 20 -262144 -1
--1 0 1;
-#X obj 255 196 pip_limiter;
-#X text 33 299 You can easily swap the oscillators with loops (see
+#X restore 190 147 pd logic;
+#X obj 12 62 tgl 40 0 layer1 l1 Layer_1 -19 -20 0 20 -262144 -1 -1
+0 1;
+#X obj 124 62 tgl 40 0 layer2 l2 Layer_2 -19 -20 0 20 -262144 -1 -1
+0 1;
+#X obj 229 62 tgl 40 0 layer3 l3 Layer_3 -19 -20 0 20 -262144 -1 -1
+0 1;
+#X obj 337 62 tgl 40 0 layer4 l4 Layer_4 -19 -20 0 20 -262144 -1 -1
+0 1;
+#X obj 185 196 pip_limiter;
+#X text -37 299 You can easily swap the oscillators with loops (see
 pip_simplesampler) and create state based additive layers for interactive
 music. Each layer can play at any time.;
-#X obj 516 61 tgl 40 0 layer5 empty Layer_5 -19 -20 0 20 -262144 -1
--1 0 1;
+#X obj 446 61 tgl 40 0 layer5 l5 Layer_5 -19 -20 0 20 -262144 -1 -1
+0 1;
+#X obj 155 248 outlet~ L;
+#X obj 254 247 outlet~ R;
+#X obj -6 141 inlet layer;
+#N canvas 502 460 302 214 chooser 1;
+#X obj 37 19 inlet;
+#X obj 20 156 s l1;
+#X floatatom 29 70 5 0 0 0 - - -;
+#X obj 64 156 s l2;
+#X obj 105 155 s l3;
+#X obj 146 158 s l4;
+#X obj 185 158 s l5;
+#X obj 27 113 select 1 2 3 4 5;
+#X connect 0 0 2 0;
 #X connect 2 0 7 0;
-#X connect 2 0 7 1;
-#X connect 7 0 0 0;
-#X connect 7 1 0 1;
+#X connect 7 0 1 0;
+#X connect 7 1 3 0;
+#X connect 7 2 4 0;
+#X connect 7 3 5 0;
+#X connect 7 4 6 0;
+#X restore -6 167 pd chooser;
+#X connect 1 0 6 0;
+#X connect 1 0 6 1;
+#X connect 6 0 9 0;
+#X connect 6 1 10 0;
+#X connect 11 0 12 0;

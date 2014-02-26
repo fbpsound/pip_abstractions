@@ -6,4 +6,6 @@ the Kalimba plugin.;
 #X text 143 104 This shows received messages from Unity.;
 #X text 236 6 KALIMBA;
 #X text 559 148 pip;
+#X obj 103 129 outlet;
+#X connect 0 0 6 0;
 #X connect 1 0 0 0;

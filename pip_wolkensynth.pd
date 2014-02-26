@@ -2,8 +2,8 @@
 #X obj 321 167 mtof;
 #X obj 345 386 *~;
 #X obj 346 548 outlet~;
-#X obj 297 83 inlet;
-#X obj 247 112 bng 15 250 50 0 empty shot empty 17 7 0 10 -262144 -1
+#X obj 297 63 inlet;
+#X obj 247 92 bng 15 250 50 0 empty shot empty 17 7 0 10 -262144 -1
 -1;
 #X obj 321 351 *~;
 #X floatatom 169 269 5 0 0 0 - - -;
@@ -12,7 +12,7 @@
 #X obj 345 440 *~ 0.4;
 #X msg 169 243 1.5;
 #X obj 321 212 osc~;
-#X obj 199 111 print;
+#X obj 199 91 print;
 #X obj 456 525 dac~;
 #X msg 486 28 60;
 #X obj 481 -118 metro 200;
@@ -28,10 +28,10 @@
 #X msg 516 120 \$1;
 #X text 494 521 Test DAC~ Object;
 #X text 631 10 TEST Sequence;
-#X text 171 84 Inlet for Midi Notes;
+#X text 171 64 Inlet for Midi Notes;
 #X obj 359 212 pip_env_simple;
 #X obj 97 138 vsl 15 128 0 5000 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 500 1;
 #X text 202 242 Bit of modulation;
 #X text 66 117 Ring Mod;
 #X text 98 334 Tiny Modulation Section;
@@ -43,11 +43,13 @@
 #X obj 563 101 r off;
 #X text 63 -131 MINI SYNTH - WOLKENSYNTH;
 #X text 801 610 pip;
+#X obj 394 75 inlet ringmod;
 #X connect 0 0 11 0;
 #X connect 1 0 9 0;
 #X connect 3 0 0 0;
 #X connect 3 0 4 0;
 #X connect 3 0 12 0;
+#X connect 3 0 28 0;
 #X connect 5 0 1 0;
 #X connect 6 0 8 0;
 #X connect 7 0 10 0;
@@ -75,3 +77,4 @@
 #X connect 28 0 1 1;
 #X connect 29 0 6 0;
 #X connect 37 0 24 0;
+#X connect 40 0 29 0;

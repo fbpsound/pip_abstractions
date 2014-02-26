@@ -1,5 +1,4 @@
-#N canvas 213 180 670 387 10;
-#X obj 275 267 dac~;
+#N canvas 276 399 714 421 10;
 #N canvas 519 295 942 535 logic 0;
 #X obj 32 218 vline~;
 #X obj 179 309 *~;
@@ -88,26 +87,51 @@
 #X connect 31 0 8 0;
 #X connect 31 0 5 0;
 #X connect 31 0 2 0;
-#X restore 270 157 pd logic;
-#X obj 265 206 pip_limiter;
-#X text 43 309 You can easily swap the oscillators with loops (see
+#X restore 290 177 pd logic;
+#X obj 285 226 pip_limiter;
+#X text 63 329 You can easily swap the oscillators with loops (see
 pip_simplesampler) and create state based crossfade layers for interactive
 music. Only one layer plays at every moment.;
-#X text 25 11 5 Crossfade Layer Interactive Music Machine;
-#X obj 133 78 bng 40 250 50 0 layer1 empty Layer_1 -19 -20 0 20 -262144
+#X text 45 31 5 Crossfade Layer Interactive Music Machine;
+#X obj 153 98 bng 40 250 50 0 layer1 xfl1 Layer_1 -19 -20 0 20 -262144
 -1 -1;
-#X obj 239 78 bng 40 250 50 0 layer2 empty Layer_2 -19 -20 0 20 -262144
+#X obj 259 98 bng 40 250 50 0 layer2 xfl2 Layer_2 -19 -20 0 20 -262144
 -1 -1;
-#X obj 345 78 bng 40 250 50 0 layer3 empty Layer_3 -19 -20 0 20 -262144
+#X obj 365 98 bng 40 250 50 0 layer3 xfl3 Layer_3 -19 -20 0 20 -262144
 -1 -1;
-#X obj 445 78 bng 40 250 50 0 layer4 empty Layer_4 -19 -20 0 20 -262144
+#X obj 465 98 bng 40 250 50 0 layer4 xfl4 Layer_4 -19 -20 0 20 -262144
 -1 -1;
-#X obj 547 78 bng 40 250 50 0 layer5 empty Layer_5 -19 -20 0 20 -262144
+#X obj 567 98 bng 40 250 50 0 layer5 xfl5 Layer_5 -19 -20 0 20 -262144
 -1 -1;
-#X obj 31 77 bng 40 250 50 0 stop empty Stop -2 -20 0 20 -262144 -1
--1;
-#X text 432 359 pip;
+#X obj 51 97 bng 40 250 50 0 stop xflstop Stop -2 -20 0 20 -262144
+-1 -1;
+#X text 452 379 pip;
+#X obj 108 179 inlet layer;
+#N canvas 502 460 302 214 chooser 0;
+#X obj 37 19 inlet;
+#X obj 27 113 select 1 2 3 4 5;
+#X obj 20 156 s xfl1;
+#X obj 64 156 s xfl2;
+#X obj 107 156 s xfl3;
+#X obj 146 156 s xfl4;
+#X obj 185 156 s xfl5;
+#X obj 240 151 s xflstop;
+#X floatatom 29 70 5 0 0 0 - - -;
+#X obj 161 65 sel 0;
+#X connect 0 0 9 0;
+#X connect 0 0 8 0;
 #X connect 1 0 2 0;
-#X connect 1 0 2 1;
-#X connect 2 0 0 0;
-#X connect 2 1 0 1;
+#X connect 1 1 3 0;
+#X connect 1 2 4 0;
+#X connect 1 3 5 0;
+#X connect 1 4 6 0;
+#X connect 8 0 1 0;
+#X connect 9 0 7 0;
+#X restore 108 205 pd chooser;
+#X obj 263 285 outlet~ L;
+#X obj 369 285 outlet~ R;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 1 0 13 0;
+#X connect 1 1 14 0;
+#X connect 11 0 12 0;

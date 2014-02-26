@@ -1,0 +1,19 @@
+#N canvas 804 321 422 216 10;
+#X text 340 44 pip;
+#X text 21 -128 Pip Counter_mod Help Patcher;
+#X obj 58 -11 pip_counter_mod 5;
+#X obj 62 -46 metro 500;
+#X obj 61 -71 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X floatatom 54 41 5 0 0 0 - - -;
+#X obj 58 -97 loadbang;
+#X obj 179 -43 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 178 -11 Insert number to be counted to;
+#X text 94 40 comment;
+#X text 203 -43 Reset;
+#X connect 2 0 5 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 6 0 4 0;
+#X connect 7 0 2 1;

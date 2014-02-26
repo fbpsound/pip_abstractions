@@ -1,0 +1,18 @@
+#N canvas 804 321 422 216 10;
+#X text 350 54 pip;
+#X obj 46 -5 pip_counter;
+#X obj 41 -35 metro 500;
+#X obj 40 -56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 41 -79 loadbang;
+#X floatatom 49 30 5 0 0 0 - - -;
+#X text 22 -132 Pip Counter Help Patch Simple Counter.;
+#X text 89 31 Result;
+#X obj 132 -29 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 154 -29 Reset here;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 8 0 1 1;
