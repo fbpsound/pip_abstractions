@@ -1,0 +1,244 @@
+#N canvas 0 22 1357 452 10;
+#X obj 1269 308 outlet~ L;
+#X obj 1329 308 outlet~ R;
+#X obj 107 222 vsl 15 128 0 0.7 0 0 vol_1 volstart Ch.1 20 120 0 20
+-257985 -1 -1 0 1;
+#X obj 239 221 vsl 15 128 0 0.7 0 0 vol_2 volstart Ch.2 20 120 0 20
+-257985 -1 -1 0 1;
+#X obj 1647 211 loadbang;
+#X obj 111 99 inlet~;
+#X obj 202 99 inlet~;
+#X obj 130 242 vsl 15 50 0 0.7 0 1 sendvol_1 sendstart Delay 0 -9 0
+10 -4034 -1 -1 1400 1;
+#X obj 386 99 inlet~;
+#X obj 463 99 inlet~;
+#X obj 267 241 vsl 15 50 0 0.7 0 1 sendvol_2 sendstart Delay 0 -9 0
+10 -4034 -1 -1 600 1;
+#X obj 665 98 inlet~;
+#X obj 725 98 inlet~;
+#X obj 376 220 vsl 15 128 0 0.7 0 0 vol_3 volstart Ch.3 20 120 0 20
+-257985 -1 -1 0 1;
+#X obj 404 239 vsl 15 50 0 0.7 0 1 sendvol_3 sendstart Delay 0 -9 0
+10 -4034 -1 -1 0 1;
+#X msg 1616 243 0.7;
+#X obj 1602 269 s volstart;
+#X obj 1670 269 s sendstart;
+#X text 1603 344 Place effects here;
+#X text 1601 291 Initial Mixer Settings;
+#X floatatom 1454 210 5 0 0 1 Delay_time - delaytime;
+#X text 64 61 Expandable Mixer with send bus.;
+#X text 1715 407 pip;
+#N canvas 340 520 679 303 mixer_effects 0;
+#X obj 83 146 throw~ revretL;
+#X obj 180 145 throw~ revretR;
+#X obj 60 56 catch~ revsendL;
+#X obj 170 56 catch~ revsendR;
+#X floatatom 171 78 5 0 0 1 Delay_Time delaytime -;
+#N canvas 1052 515 519 369 delay 0;
+#X obj -49 -2 inlet~;
+#X obj 58 258 outlet~ L;
+#X obj 132 258 outlet~ R;
+#X obj 305 50 pip_vu;
+#X obj 306 80 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X obj 305 26 r~ delayvu;
+#X obj 126 219 s~ delayvu;
+#X obj 116 4 delwrite~ delaybuffer 2500;
+#X obj 132 167 *~ 0.4;
+#X obj 132 67 lop~ 2500;
+#X text 220 48 Lowpass;
+#X text 202 149 Feedback;
+#X obj 71 192 vd~ delaybuffer 100;
+#X floatatom -19 72 5 15 5000 0 - - -;
+#X obj -19 120 vline~;
+#X floatatom 183 47 5 0 44000 0 - - -;
+#X floatatom 165 147 5 0 1 0 - - -;
+#X msg -19 97 \$1 100;
+#X obj 183 26 inlet lp;
+#X obj 166 88 inlet fb;
+#X obj -18 49 inlet time;
+#X obj 166 126 min 1;
+#X obj 167 107 max 0;
+#X connect 0 0 9 0;
+#X connect 3 0 4 0;
+#X connect 5 0 3 0;
+#X connect 8 0 9 0;
+#X connect 9 0 7 0;
+#X connect 12 0 8 0;
+#X connect 12 0 1 0;
+#X connect 12 0 2 0;
+#X connect 12 0 6 0;
+#X connect 13 0 17 0;
+#X connect 14 0 12 0;
+#X connect 15 0 9 1;
+#X connect 16 0 8 1;
+#X connect 17 0 14 0;
+#X connect 18 0 15 0;
+#X connect 19 0 22 0;
+#X connect 20 0 13 0;
+#X connect 21 0 16 0;
+#X connect 22 0 21 0;
+#X restore 104 116 pd delay;
+#X text 129 190 Delay;
+#X text 428 198 Reverb;
+#X obj 377 148 throw~ rev2retL;
+#X obj 516 147 throw~ rev2retR;
+#X obj 384 57 catch~ rev2sendL;
+#X obj 496 57 catch~ rev2sendR;
+#X obj 452 97 pip_reverb;
+#X floatatom 239 97 5 0 0.35 1 Feedback - -;
+#X floatatom 290 116 5 0 0 1 Lowpass - -;
+#X obj 301 61 vsl 15 10 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 4 0 5 1;
+#X connect 5 0 0 0;
+#X connect 5 1 1 0;
+#X connect 10 0 12 0;
+#X connect 11 0 12 1;
+#X connect 12 0 8 0;
+#X connect 12 1 9 0;
+#X connect 13 0 5 2;
+#X connect 14 0 5 2;
+#X connect 15 0 13 0;
+#X restore 1602 325 pd mixer_effects;
+#X obj 521 219 vsl 15 128 0 0.7 0 0 vol_4 volstart Ch.4 20 120 0 20
+-257985 -1 -1 0 1;
+#X obj 549 238 vsl 15 50 0 0.7 0 0 sendvol_4 sendstart Delay 0 -9 0
+10 -4034 -1 -1 0 1;
+#X obj 979 98 inlet~;
+#X obj 1032 99 inlet~;
+#X obj 592 238 vsl 15 50 0 0.7 0 0 send2vol_4 sendstart Reverb 0 -9
+0 10 -262144 -1 -1 0 1;
+#X obj 452 239 vsl 15 50 0 0.7 0 1 send2vol_3 sendstart Reverb 0 -9
+0 10 -262144 -1 -1 0 1;
+#X obj 318 242 vsl 15 50 0 0.7 0 1 send2vol_2 sendstart Reverb 0 -9
+0 10 -262144 -1 -1 1300 1;
+#X obj 175 243 vsl 15 50 0 0.7 0 1 send2vol_1 sendstart Reverb 0 -9
+0 10 -262144 -1 -1 2100 1;
+#X msg 1434 233 default;
+#X msg 1434 302 huge;
+#X msg 1434 325 huge_noexcursion;
+#X msg 1434 256 large;
+#X msg 1434 279 large_noexcursion;
+#X obj 1434 355 s reverbpresets;
+#X obj 1430 208 cnv 15 20 20 empty empty empty 20 12 0 14 -4034 -66577
+0;
+#X text 1486 231 Reverb Presets;
+#X obj 1234 225 vu 15 120 finalVU Final_Output 20 120 1 20 -66577 -1
+0 0;
+#N canvas 476 518 450 300 outputs 0;
+#X obj 106 207 outlet~;
+#X obj 230 210 outlet~;
+#X obj 202 75 catch~ sumR;
+#X obj 91 74 catch~ sumL;
+#N canvas 0 22 450 300 returns 0;
+#X obj 77 69 catch~ revretL;
+#X obj 229 70 catch~ revretR;
+#X obj 133 185 outlet~ L;
+#X obj 204 186 outlet~ R;
+#X obj 120 108 catch~ rev2retL;
+#X obj 253 110 catch~ rev2retR;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 4 0 2 0;
+#X connect 5 0 3 0;
+#X restore 99 98 pd returns;
+#N canvas 307 572 450 300 vu 0;
+#X obj 71 71 env~;
+#X obj 72 98 - 100;
+#X obj 71 44 inlet~;
+#X obj 81 131 s finalVU;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 0 0;
+#X restore 156 151 pd vu;
+#X connect 2 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 5 0;
+#X connect 3 0 0 0;
+#X connect 4 0 5 0;
+#X connect 4 0 0 0;
+#X connect 4 1 5 0;
+#X connect 4 1 1 0;
+#X restore 1269 279 pd outputs;
+#X obj 1412 374 cnv 15 100 60 empty empty Effect_Settings 20 12 0 20
+-262144 -66577 0;
+#X obj 59 135 pip_channel vol_1 sendvol_1 send2vol_1 vu_1;
+#X obj 85 230 vu 15 120 vu_1 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 220 230 vu 15 120 vu_2 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 356 229 vu 15 120 vu_3 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 500 227 vu 15 120 vu_4 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 335 136 pip_channel vol_2 sendvol_2 send2vol_2 vu_2;
+#X obj 626 135 pip_channel vol_3 sendvol_3 send2vol_3 vu_3;
+#X obj 907 133 pip_channel vol_4 sendvol_4 send2vol_4 vu_4;
+#X obj 1363 207 loadbang;
+#X msg 1453 188 205;
+#X obj 670 220 vsl 15 128 0 0.7 0 1 vol_5 volstart Ch.5 20 120 0 20
+-257985 -1 -1 12700 1;
+#X obj 693 240 vsl 15 50 0 0.7 0 1 sendvol_5 sendstart Delay 0 -9 0
+10 -4034 -1 -1 0 1;
+#X obj 738 241 vsl 15 50 0 0.7 0 1 send2vol_5 sendstart Reverb 0 -9
+0 10 -262144 -1 -1 0 1;
+#X obj 648 228 vu 15 120 vu_5 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 814 219 vsl 15 128 0 0.7 0 1 vol_6 volstart Ch.6 20 120 0 20
+-257985 -1 -1 12700 1;
+#X obj 837 239 vsl 15 50 0 0.7 0 1 sendvol_6 sendstart Delay 0 -9 0
+10 -4034 -1 -1 0 1;
+#X obj 882 240 vsl 15 50 0 0.7 0 1 send2vol_6 sendstart Reverb 0 -9
+0 10 -262144 -1 -1 0 1;
+#X obj 792 227 vu 15 120 vu_6 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 957 219 vsl 15 128 0 0.7 0 1 vol_7 volstart Ch.7 20 120 0 20
+-257985 -1 -1 12700 1;
+#X obj 980 239 vsl 15 50 0 0.7 0 1 sendvol_7 sendstart Delay 0 -9 0
+10 -4034 -1 -1 0 1;
+#X obj 1025 240 vsl 15 50 0 0.7 0 1 send2vol_7 sendstart Reverb 0 -9
+0 10 -262144 -1 -1 0 1;
+#X obj 935 227 vu 15 120 vu_7 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 1095 218 vsl 15 128 0 0.7 0 1 vol_8 volstart Ch.8 20 120 0 20
+-257985 -1 -1 12700 1;
+#X obj 1118 238 vsl 15 50 0 0.7 0 1 sendvol_8 sendstart Delay 0 -9
+0 10 -4034 -1 -1 0 1;
+#X obj 1163 239 vsl 15 50 0 0.7 0 1 send2vol_8 sendstart Reverb 0 -9
+0 10 -262144 -1 -1 0 1;
+#X obj 1073 226 vu 15 120 vu_8 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 1226 95 inlet~;
+#X obj 1317 95 inlet~;
+#X obj 1501 95 inlet~;
+#X obj 1578 95 inlet~;
+#X obj 1780 94 inlet~;
+#X obj 1840 94 inlet~;
+#X obj 2094 94 inlet~;
+#X obj 2147 95 inlet~;
+#X obj 1174 131 pip_channel vol_5 sendvol_5 send2vol_5 vu_5;
+#X obj 1450 132 pip_channel vol_6 sendvol_6 send2vol_6 vu_6;
+#X obj 1741 131 pip_channel vol_7 sendvol_7 send2vol_7 vu_7;
+#X obj 2022 129 pip_channel vol_8 sendvol_8 send2vol_8 vu_8;
+#X connect 4 0 15 0;
+#X connect 5 0 43 0;
+#X connect 6 0 43 1;
+#X connect 8 0 48 0;
+#X connect 9 0 48 1;
+#X connect 11 0 49 0;
+#X connect 12 0 49 1;
+#X connect 15 0 16 0;
+#X connect 26 0 50 0;
+#X connect 27 0 50 1;
+#X connect 32 0 37 0;
+#X connect 33 0 37 0;
+#X connect 34 0 37 0;
+#X connect 35 0 37 0;
+#X connect 36 0 37 0;
+#X connect 41 0 0 0;
+#X connect 41 1 1 0;
+#X connect 51 0 35 0;
+#X connect 51 0 52 0;
+#X connect 52 0 20 0;
+#X connect 69 0 77 0;
+#X connect 70 0 77 1;
+#X connect 71 0 78 0;
+#X connect 72 0 78 1;
+#X connect 73 0 79 0;
+#X connect 74 0 79 1;
+#X connect 75 0 80 0;
+#X connect 76 0 80 1;
