@@ -1,0 +1,15 @@
+#N canvas 203 572 379 281 10;
+#X floatatom 30 42 5 0 0 0 - - -;
+#X floatatom 30 131 5 0 0 0 - - -;
+#X obj 30 107 moses \$2;
+#X obj 30 161 outlet;
+#X obj 30 13 inlet;
+#X text 96 81 Define a number range in abstraction (ex. pip_range 600
+700);
+#X text 316 255 pip;
+#X obj 30 70 moses \$1;
+#X connect 0 0 7 0;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 4 0 0 0;
+#X connect 7 1 2 0;

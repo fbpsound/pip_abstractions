@@ -1,0 +1,35 @@
+#N canvas 427 316 524 375 10;
+#X obj 86 90 gemwin;
+#X msg 74 48 create \, 1;
+#X obj 202 91 gemhead;
+#X obj 202 70 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 202 145 pix_film;
+#X obj 226 176 unpack f f f;
+#X floatatom 226 205 5 0 0 0 - - -;
+#X floatatom 263 205 5 0 0 0 - - -;
+#X floatatom 299 205 5 0 0 0 - - -;
+#X obj 202 244 pix_texture;
+#X msg 379 113 auto \$1;
+#X obj 379 77 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 201 280 rectangle;
+#X text 292 88 load file;
+#X text 403 76 play;
+#X obj 44 26 loadbang;
+#X msg 277 112 open 1.mp4;
+#X text 43 350;
+#X text 441 337 pip;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 4 1 5 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 5 2 8 0;
+#X connect 9 0 12 0;
+#X connect 10 0 4 0;
+#X connect 11 0 10 0;
+#X connect 15 0 1 0;
+#X connect 16 0 4 0;
